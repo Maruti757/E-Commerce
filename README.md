@@ -1,21 +1,21 @@
-# Portfolio Website Project
+# E-Commerce Website Project
 
 ## Overview
 
-This project is a portfolio website developed as part of a web development assignment for an internship opportunity at GrowthLink. The purpose of this website is to showcase my skills, projects, and provide a way for visitors to contact me.
+This project is a E-Commerce website developed as part of a web development assignment for an internship opportunity at GrowthLink. The purpose of this website is to showcase my skills, projects, and provide a way for visitors to contact me.
 
 ## Task Objectives
 
-- Create a professional portfolio website.
-- Include an "About" section, "Skills" section, "Projects" section, and a "Contact Form".
+- Create a E-Commerce website.
+- Include an "About us" section, "Skills" section, "Projects" section, and a "Contact Form".
 - Ensure the website is responsive and mobile-friendly.
 
 ## Steps to Run the Project
- * Download the file in zip folder format.
- * then Unzip the file.
- * Open the home.html file in your web browser.
- * Copy the path of home.html
- * Run on google search
+ * Download the file in zip format.
+ * then Unzip the folder.
+ * Open the home.html file.
+ * Copy the path of home.html.
+ * Paste it on google search.
 Project Structure
 portfolio-website/
 ├── index.html
@@ -33,6 +33,7 @@ portfolio-website/
  * home.html: The main HTML file for the portfolio website.
  * css/styles.css: The stylesheet for styling the website.
  * assets/images/: Directory for images used in the website.
+ * pdf: files of Pdf used in website
  * README.md: This file, providing instructions and information about the project.
 Features
  * About Section: A brief introduction about myself.
@@ -50,7 +51,7 @@ This project will be evaluated based on the following criteria:
 Tech Stack
  * HTML5
  * CSS3
- * JavaScript
-Feel free to use any other libraries or frameworks you are comfortable with.
+ * JavaScript 
+* Feel free to use any other libraries or frameworks you are comfortable with.
 Contact
 For any questions or feedback, please feel free to reach out to me via the contact form on the website or through [your preferred contact method].
