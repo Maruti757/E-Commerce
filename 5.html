@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mathematics Resources</title>
+    <link rel="stylesheet" href="4.css" />
+    <style>
+      /* General Styles */
+      body {
+        font-family: Arial, Helvetica, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #9994b5;
+        color: #333;
+      }
+
+      .container {
+        width: 90%;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 20px;
+        text-align: center;
+      }
+
+      h1 {
+        font-size: 2.5rem;
+        margin-bottom: 20px;
+      }
+
+      h3 {
+        font-size: 1.2rem;
+        margin-bottom: 30px;
+      }
+
+      nav {
+        margin-bottom: 20px;
+      }
+
+      nav button {
+        background-color: hsl(210, 36%, 95%);
+        color: rgb(87, 19, 206);
+        padding: 10px 20px;
+        border: 1px solid #0a0a0a;
+        border-radius: 5px;
+        font-size: 1.1rem;
+        cursor: pointer;
+        margin: 5px;
+      }
+
+      nav button:hover {
+        background-color: #ddd;
+      }
+
+      /* Page Styles */
+      .page {
+        display: none;
+      }
+
+      .active {
+        display: block;
+      }
+
+      .m1 {
+        display: grid;
+      }
+
+      .m2 {
+        justify-content: center;
+      }
+
+      img {
+        max-width: 100%;
+        height: auto;
+      }
+
+      button[type="submit"] {
+        margin: 10px;
+        padding: 10px 20px;
+        background-color: darkgoldenrod;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+
+      button[type="submit"]:hover {
+        background-color: #eb28d1;
+      }
+
+      /* Responsive Styles */
+      @media (max-width: 768px) {
+        h1 {
+          font-size: 2rem;
+        }
+
+        h3 {
+          font-size: 1rem;
+        }
+
+        nav button {
+          font-size: 0.9rem;
+          padding: 8px 16px;
+        }
+      }
+
+      @media (max-width: 480px) {
+        h1 {
+          font-size: 1.5rem;
+        }
+
+        h3 {
+          font-size: 0.9rem;
+        }
+
+        nav button {
+          font-size: 0.8rem;
+          padding: 6px 12px;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="container">
+      <h1>MATHEMATICS</h1>
+      <h3>
+        This section contains free e-books and guidance on Mathematics. Some of
+        the resources in this section can be viewed online, and some of them can
+        be downloaded.
+      </h3>
+
+      <!-- Navigation -->
+      <nav>
+        <button onclick="showPage('algebraic-geometry')">
+          Algebraic Geometry
+        </button>
+        <button onclick="showPage('applied-mathematics')">
+          Applied Mathematics
+        </button>
+        <button onclick="showPage('basic-mathematics')">
+          Basic Mathematics
+        </button>
+      </nav>
+
+      <!-- Pages -->
+      <div id="algebraic-geometry" class="page">
+        <h1>ALGEBRAIC GEOMETRY</h1>
+        <h3>
+          There are many downloadable free computer algorithm books, available
+          in our collection of books. Which are available in the form of PDF,
+          Online Textbooks, eBooks and lecture notes. These books cover basics,
+          beginner, and advanced concepts and also those who looking for
+          introduction to the same.
+        </h3>
+        <div class="m1 m2">
+          <img src="./assets/img/m1.jpg" width="500" height="500" />
+          <button type="submit">
+            <a href="./pdf/m1.pdf">Click here for read</a>
+          </button>
+          <img src="./assets/img/m2.jpg" width="500" height="500" />
+          <button type="submit">
+            <a href="./pdf/m2.pdf">Click here for read</a>
+          </button>
+          <img src="./assets/img/m3.jpg" width="500" height="500" />
+          <button type="submit">
+            <a href="./pdf/m3.pdf">Click here for read</a>
+          </button>
+          <img src="./assets/img/m4.jpg" width="500" height="500" />
+          <button type="submit">
+            <a href="./pdf/m4.pdf">Click here for read</a>
+          </button>
+          <img src="./assets/img/m5.jpg" width="500" height="500" />
+          <button type="submit">
+            <a href="./pdf/m5.pdf">Click here for read</a>
+          </button>
+        </div>
+      </div>
+
+      <div id="applied-mathematics" class="page">
+        <h1>APPLIED MATHEMATICS</h1>
+        <h3>
+          There are many downloadable free computer algorithm books, available
+          in our collection of books. Which are available in the form of PDF,
+          Online Textbooks, eBooks and lecture notes. These books cover basics,
+          beginner, and advanced concepts and also those who looking for
+          introduction to the same.
+        </h3>
+        <div class="m1 m2">
+          <img src="./assets/img/a1.jpg" width="500" height="500" />
+          <button type="submit">
+            <a href="./pdf/a1.pdf">Click here for read</a>
+          </button>
+          <img src="./assets/img/a2.jpg" width="500" height="500" />
+          <button type="submit">
+            <a href="./pdf/a2.pdf">Click here for read</a>
+          </button>
+          <img src="./assets/img/a3.jpg" width="500" height="500" />
+          <button type="submit">
+            <a href="./pdf/a3.pdf">Click here for read</a>
+          </button>
+        </div>
+      </div>
+
+      <div id="basic-mathematics" class="page">
+        <h1>BASIC MATHEMATICS</h1>
+        <h3>
+          There are many downloadable free computer algorithm books, available
+          in our collection of books. Which are available in the form of PDF,
+          Online Textbooks, eBooks and lecture notes. These books cover basics,
+          beginner, and advanced concepts and also those who looking for
+          introduction to the same.
+        </h3>
+        <div class="m1 m2">
+          <img src="./assets/img/b1.jpg" width="500" height="500" />
+          <button type="submit">
+            <a href="https://www.maths.tcd.ie/~houghton/231/07-08/notes.php"
+              >Click here for read</a
+            >
+          </button>
+          <img src="./assets/img/b2.jpg" width="500" height="500" />
+          <button type="submit">
+            <a href="./pdf/b2.pdf">Click here for read</a>
+          </button>
+          <img src="./assets/img/bm3.jpg" width="500" height="500" />
+          <button type="submit">
+            <a href="./pdf/bm3.pdf">Click here for read</a>
+          </button>
+          <img src="./assets/img/b4.jpg" width="500" height="500" />
+          <button type="submit">
+            <a href="./pdf/b4.pdf">Click here for read</a>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      function showPage(pageId) {
+        // Hide all pages
+        document.querySelectorAll(".page").forEach((page) => {
+          page.classList.remove("active");
+        });
+
+        // Show the selected page
+        document.getElementById(pageId).classList.add("active");
+      }
+    </script>
+  </body>
+</html>

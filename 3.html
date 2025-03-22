@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="3.css">
+    <title>E-Book Reading Challenge</title>
+    <style>
+        /* General Styles */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+            color: #333;
+        }
+
+        .container {
+            text-align: center;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 25%;
+            margin-left: auto;
+            margin-right: 20px;
+        }
+
+        h1 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+
+        #datetime {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #04AA6D;
+        }
+
+        .challenge {
+            margin-top: 20px;
+        }
+
+        .challenge h2 {
+            color: #04AA6D;
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+
+        .challenge input[type="date"] {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 1rem;
+            margin-bottom: 10px;
+        }
+
+        .challenge button {
+            padding: 10px 20px;
+            background-color: #04AA6D;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        .challenge button:hover {
+            background-color: #45a049;
+        }
+
+        .challenge p {
+            font-size: 1.1rem;
+            margin-top: 10px;
+        }
+
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropbtn {
+            background-color: #04AA6D;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+            width: 10%;
+            height: 50%;
+            margin: 20px;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+            min-width: 160px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            z-index: 1;
+        }
+
+        .dropdown-content a {
+            color: #333;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+        }
+
+        .dropdown-content a:hover {
+            background-color: #ddd;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        .dropdown:hover .dropbtn {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Dropdown Menu -->
+    <div class="dropdown">
+        <button class="dropbtn">HOME</button>
+        <div class="dropdown-content">
+            <a href="4.html">COMPUTER SCIENCE</a>
+            <a href="5.html">MATHEMATICS</a>
+            <a href="6.html">PROGRAMMING LANGUAGES</a>
+            <h1>Next E-Books uploaded soon..</h1>
+        </div>
+    </div>
+    <hr>
+
+    <!-- Current Date, Time, and Day -->
+    <div class="container">
+        <h1>Current Date, Time, and Day</h1>
+        <div id="datetime">Loading...</div>
+    </div>
+
+    <!-- E-Book Reading Challenge -->
+    <div class="container challenge">
+        <h2>E-Book Reading Challenge</h2>
+        <p>Set a due date to complete reading your e-book:</p>
+        <input type="date" id="dueDate">
+        <button onclick="setDueDate()">Set Due Date</button>
+        <p id="dueDateMessage"></p>
+    </div>
+
+    <script>
+        // Function to update date, time, and day
+        function updateDateTime() {
+            const now = new Date();
+
+            // Get date, time, and day
+            const date = now.toLocaleDateString();
+            const time = now.toLocaleTimeString();
+            const day = now.toLocaleDateString('en-US', { weekday: 'long' });
+
+            // Display in the HTML
+            document.getElementById('datetime').innerHTML = `
+                <p>Date: ${date}</p>
+                <p>Time: ${time}</p>
+                <p>Day: ${day}</p>
+            `;
+        }
+
+        // Function to set due date for reading challenge
+        function setDueDate() {
+            const dueDateInput = document.getElementById('dueDate');
+            const dueDate = new Date(dueDateInput.value);
+            const now = new Date();
+
+            if (dueDate <= now) {
+                alert("Please select a future date.");
+                return;
+            }
+
+            // Calculate the difference in days
+            const timeDiff = dueDate - now;
+            const daysDiff = Math.ceil(timeDiff / (1000 * 60 * 60 * 24));
+
+            // Display the due date message
+            document.getElementById('dueDateMessage').innerHTML = `
+                You have <strong>${daysDiff} days</strong> to complete reading your e-book.
+            `;
+        }
+
+        // Update the date and time every second
+        setInterval(updateDateTime, 1000);
+
+        // Initial call to display immediately
+        updateDateTime();
+    </script>
+</body>
+
+</html>

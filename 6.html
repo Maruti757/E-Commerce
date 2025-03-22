@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Programming Languages</title>
+    <link rel="stylesheet" href="4.css" />
+    <style>
+      /* General Styles */
+      body {
+        font-family: Arial, Helvetica, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #9994b5;
+        color: #333;
+      }
+
+      .container {
+        width: 90%;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 20px;
+        text-align: center;
+      }
+
+      h1 {
+        font-size: 2.5rem;
+        margin-bottom: 20px;
+      }
+
+      h3 {
+        font-size: 1.2rem;
+        margin-bottom: 30px;
+      }
+
+      nav {
+        margin-bottom: 20px;
+      }
+
+      nav button {
+        background-color: hsl(210, 36%, 95%);
+        color: rgb(87, 19, 206);
+        padding: 10px 20px;
+        border: 1px solid #0a0a0a;
+        border-radius: 5px;
+        font-size: 1.1rem;
+        cursor: pointer;
+        margin: 5px;
+      }
+
+      nav button:hover {
+        background-color: #ddd;
+      }
+
+      /* Page Styles */
+      .page {
+        display: none;
+      }
+
+      .active {
+        display: block;
+      }
+
+      .m1 {
+        display: grid;
+      }
+
+      .m2 {
+        justify-content: center;
+      }
+
+      img {
+        max-width: 100%;
+        height: auto;
+      }
+
+      button[type="submit"] {
+        margin: 10px;
+        padding: 10px 20px;
+        background-color: darkgoldenrod;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+
+      button[type="submit"]:hover {
+        background-color: #eb28d1;
+      }
+
+      /* Responsive Styles */
+      @media (max-width: 768px) {
+        h1 {
+          font-size: 2rem;
+        }
+
+        h3 {
+          font-size: 1rem;
+        }
+
+        nav button {
+          font-size: 0.9rem;
+          padding: 8px 16px;
+        }
+      }
+
+      @media (max-width: 480px) {
+        h1 {
+          font-size: 1.5rem;
+        }
+
+        h3 {
+          font-size: 0.9rem;
+        }
+
+        nav button {
+          font-size: 0.8rem;
+          padding: 6px 12px;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="container">
+      <h1>PROGRAMMING LANGUAGES</h1>
+      <h3>
+        This section contains free e-books and guidance on Programming
+        Languages. Some of the resources in this section can be viewed online,
+        and some of them can be downloaded.
+      </h3>
+
+      <!-- Navigation -->
+      <nav>
+        <button onclick="showPage('c-programming')">C Programming</button>
+        <button onclick="showPage('cpp-programming')">C++ Programming</button>
+        <button onclick="showPage('python')">Python</button>
+      </nav>
+
+      <!-- Pages -->
+      <div id="c-programming" class="page">
+        <h1>C PROGRAMMING</h1>
+        <h3>
+          There are many downloadable free C programming books, available in our
+          collection of books. Which are available in the form of PDF, Online
+          Textbooks, eBooks and lecture notes. These books cover basics,
+          beginner, and advanced concepts and also those who looking for
+          introduction to the same.
+        </h3>
+        <div class="m1 m2">
+          <img src="./assets/img/c1.jpg" width="500" height="500" />
+          <button type="submit">
+            <a
+              href="https://ocw.mit.edu/courses/6-087-practical-programming-in-c-january-iap-2010/pages/lecture-notes/"
+              >Click here for read</a
+            >
+          </button>
+          <img src="./assets/img/c2.jpg" width="500" height="500" />
+          <button type="submit">
+            <a
+              href="https://www.vssut.ac.in/lecture_notes/lecture1422486950.pdf"
+              >Click here for read</a
+            >
+          </button>
+          <img src="./assets/img/c3.jpg" width="500" height="500" />
+          <button type="submit">
+            <a
+              href="https://www.iare.ac.in/sites/default/files/lecture_notes/C%20LECTURE%20NOTES%20FULL_1.pdf"
+              >Click here for read</a
+            >
+          </button>
+          <img src="./assets/img/c4.jpg" width="500" height="500" />
+          <button type="submit">
+            <a
+              href="https://www.eiilmuniversity.co.in/downloads/Computer-Programming.pdf"
+              >Click here for read</a
+            >
+          </button>
+        </div>
+      </div>
+
+      <div id="cpp-programming" class="page">
+        <h1>C++ PROGRAMMING</h1>
+        <h3>
+          There are many downloadable free C++ programming books, available in
+          our collection of books. Which are available in the form of PDF,
+          Online Textbooks, eBooks and lecture notes. These books cover basics,
+          beginner, and advanced concepts and also those who looking for
+          introduction to the same.
+        </h3>
+        <div class="m1 m2">
+          <img src="./assets/img/cpp1.jpg" width="500" height="500" />
+          <button type="submit">
+            <a
+              href="https://public.websites.umich.edu/~bielajew/ENG101/book.pdf"
+              >Click here for read</a
+            >
+          </button>
+          <img src="./assets/img/cpp2.jpg" width="500" height="500" />
+          <button type="submit">
+            <a
+              href="https://www.freebookcentre.net/programming-books-download/gotoweb.php?id=11134"
+              >Click here for read</a
+            >
+          </button>
+          <img src="./assets/img/cpp3.jpg" width="500" height="500" />
+          <button type="submit">
+            <a
+              href="https://www.freebookcentre.net/programming-books-download/gotoweb.php?id=11141"
+              >Click here for read</a
+            >
+          </button>
+        </div>
+      </div>
+
+      <div id="python" class="page">
+        <h1>PYTHON</h1>
+        <h3>
+          There are many downloadable free Python programming books, available
+          in our collection of books. Which are available in the form of PDF,
+          Online Textbooks, eBooks and lecture notes. These books cover basics,
+          beginner, and advanced concepts and also those who looking for
+          introduction to the same.
+        </h3>
+        <div class="m1 m2">
+          <img src="./assets/img/py1.jpg" width="500" height="500" />
+          <button type="submit">
+            <a
+              href="https://fangohr.github.io/introduction-to-python-for-computational-science-and-engineering/book.pdf"
+              >Click here for read</a
+            >
+          </button>
+          <img src="./assets/img/py2.jpg" width="500" height="500" />
+          <button type="submit">
+            <a
+              href="https://aits-tpt.edu.in/wp-content/uploads/2022/05/Basics-of-Python-Programming-20AES0509_compressed.pdf"
+              >Click here for read</a
+            >
+          </button>
+          <img src="./assets/img/py3.jpg" width="500" height="500" />
+          <button type="submit">
+            <a
+              href="http://assets.digitalocean.com/books/python/machine-learning-projects-python.pdf"
+              >Click here for read</a
+            >
+          </button>
+          <img src="./assets/img/py4.jpg" width="500" height="500" />
+          <button type="submit">
+            <a
+              href="https://www.iare.ac.in/sites/default/files/IARE_OOPS_Lecture%20Notes.pdf"
+              >Click here for read</a
+            >
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      function showPage(pageId) {
+        // Hide all pages
+        document.querySelectorAll(".page").forEach((page) => {
+          page.classList.remove("active");
+        });
+
+        // Show the selected page
+        document.getElementById(pageId).classList.add("active");
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment Page</title>
+    <style>
+        /* CSS Variables for consistent styling */
+        :root {
+            --primary-color: #04AA6D;
+            --primary-hover-color: #45a049;
+            --background-color: #f4f4f4;
+            --container-bg-color: #fff;
+            --text-color: #333;
+            --border-radius: 8px;
+            --box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            --input-padding: 10px;
+            --input-margin: 10px 0;
+        }
+
+        /* Base styles */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: var(--background-color);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height:auto;
+            margin: 0;
+            color: var(--text-color);
+        }
+ .section-border {
+            border: 1px solid #ccc; 
+            border-radius: 8px; 
+            padding: 16px; 
+            margin-bottom: 16px; /* Add space between sections */
+        }
+        /* Payment container */
+        .payment-container {
+            background-color: var(--container-bg-color);
+            padding: 20px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            width: 400px;
+            text-align: center;
+        }
+
+        .payment-container h2 {
+            margin-bottom: 20px;
+        }
+
+        .payment-container p {
+            margin: var(--input-margin);
+        }
+        .payment-section{
+         border: 1px solid #ccc; /* Add a border */
+         border-radius: 8px; /* Optional: Rounded corners */
+         padding: 16px; /* Add some padding inside the border */
+         margin-bottom: 16px; /* Add space between sections */
+}
+
+h3 {
+    margin-top: 0; /* Remove default margin for h3 */
+}
+
+        /* Input fields */
+        .input-field {
+            width: 100%;
+            padding: var(--input-padding);
+            margin: var(--input-margin);
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        /* Button styles */
+        .btn {
+            background-color: var(--primary-color);
+            color: white;
+            padding: var(--input-padding) 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn:hover {
+            background-color: var(--primary-hover-color);
+        }
+
+        /* Cart item styles */
+        .cart-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .cart-item img {
+            width: 50px;
+            height: 50px;
+            margin-right: 10px;
+            border-radius: 5px;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 480px) {
+            .payment-container {
+                width: 90%;
+                padding: 15px;
+            }
+
+            .input-field {
+                font-size: 14px;
+            }
+
+            .btn {
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+        <!-- User Details Form -->
+       <form id="payment-form">
+        <!-- Billing Information Section -->
+        <div class="section-border">
+            <h3>Billing Information</h3>
+            <input type="text" id="name" class="input-field" placeholder="Full Name" required>
+            <input type="email" id="email" class="input-field" placeholder="Email Address" required>
+            <input type="tel" id="phone" class="input-field" placeholder="Phone Number" required>
+        </div>
+
+        <!-- Payment Information Section -->
+        <div class="section-border">
+            <h3>Payment Information</h3>
+            <input type="text" id="card-number" class="input-field" placeholder="Card Number" required>
+            <input type="text" id="expiry-date" class="input-field" placeholder="MM/YY" required>
+            <input type="text" id="cvv" class="input-field" placeholder="CVV" required>
+        </div>
+
+        <!-- UPI Payment Section -->
+        <h3>OR</h3>
+        <div class="section-border">
+            <h3>UPI Payment</h3>
+            <input type="text" id="upi-id" class="input-field" placeholder="Enter UPI ID" required>
+        </div>
+
+        <!-- Billing Address Section -->
+        <div class="section-border">
+            <h3>Billing Address</h3>
+            <input type="text" id="address" class="input-field" placeholder="Street Address" required>
+            <input type="text" id="city" class="input-field" placeholder="City" required>
+            <input type="text" id="state" class="input-field" placeholder="State" required>
+            <input type="text" id="zip" class="input-field" placeholder="ZIP Code" required>
+            <input type="text" id="country" class="input-field" placeholder="Country" required>
+        </div>
+        <div class="payment-container">
+            <h2>Complete Your Payment</h2>
+            <div id="payment-details"></div>
+            <button type="submit" class="btn">Pay Now</button>
+        </div>
+        </form>
+
+    </div>
+
+    <script>
+        // Get URL parameters
+        const urlParams = new URLSearchParams(window.location.search);
+        const product = urlParams.get('product');
+        const price = urlParams.get('price');
+        const image = urlParams.get('image');
+        const cartData = urlParams.get('cart');
+
+        // Display payment details
+        const paymentDetails = document.getElementById("payment-details");
+
+        if (product && price && image) {
+            // Individual product purchase
+            paymentDetails.innerHTML = `
+                <div class="cart-item">
+                    <img src="${decodeURIComponent(image)}" alt="${decodeURIComponent(product)}">
+                    <div>
+                        <p>Product: ${decodeURIComponent(product)}</p>
+                        <p>Total: ₹${price}</p>
+                    </div>
+                </div>
+            `;
+        } else if (cartData) {
+            // Cart purchase
+            const cart = JSON.parse(decodeURIComponent(cartData));
+            let total = 0;
+            paymentDetails.innerHTML = '<p>Your Cart:</p>';
+            cart.forEach(item => {
+                paymentDetails.innerHTML += `
+                    <div class="cart-item">
+                        <img src="${item.image}" alt="${item.name}">
+                        <div>
+                            <p>${item.name} - ₹${item.price} x ${item.quantity}</p>
+                        </div>
+                    </div>
+                `;
+                total += item.price * item.quantity;
+            });
+            paymentDetails.innerHTML += `<p>Total: ₹${total}</p>`;
+        }
+
+        // Handle form submission
+        document.getElementById("payment-form").addEventListener("submit", function (event) {
+            event.preventDefault(); // Prevent form submission
+
+            // Validate form inputs
+            const name = document.getElementById("name").value;
+            const email = document.getElementById("email").value;
+            const phone = document.getElementById("phone").value;
+            const cardNumber = document.getElementById("card-number").value;
+            const expiryDate = document.getElementById("expiry-date").value;
+            const cvv = document.getElementById("cvv").value;
+            const address = document.getElementById("address").value;
+            const city = document.getElementById("city").value;
+            const state = document.getElementById("state").value;
+            const zip = document.getElementById("zip").value;
+            const country = document.getElementById("country").value;
+
+            if (!name || !email || !phone || !cardNumber || !expiryDate || !cvv || !address || !city || !state || !zip || !country) {
+                alert("Please fill out all fields.");
+                return;
+            }
+
+            // Simulate payment processing
+            alert("Payment successful! Thank you for your purchase.");
+            window.location.href = "pay2.html"; // Redirect to confirmation page
+        });
+    </script>
+</body>
+
+</html>

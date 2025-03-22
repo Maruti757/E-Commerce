@@ -1,0 +1,137 @@
+.dropbtn{
+    background-color: rgb(120, 246, 246);
+    color: antiquewhite;
+    padding:16px;
+    font-size:50px;
+    border:none;
+
+}
+.dropdown{
+    position:relative;
+    display:inline-block;
+
+}
+.dropdown-content{
+ display:none;
+ position: absolute;
+ background-color: azure;
+ min-width: 160px;
+ box-shadow: 0px 8px 16px 0px;
+ z-index: 1;
+ 
+}
+.dropdown-content a{
+    color: black;
+    padding: 12px;
+    display: block;
+}
+.dropdown-content a:hover{
+    background-color: blueviolet;
+}
+.dropdown:hover .dropdown-content{
+    display:block;
+}
+.dropdown:hover .dropbtn
+{
+background-color: rgb(166, 98, 16);
+}
+th{
+    font-size:30 ;
+    padding: 30;
+    font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+.m1{
+    display:grid;
+}
+.m2{
+    justify-content:center;
+}
+
+/* General Styles */
+body {
+    font-family:Arial, Helvetica, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #9994b5;
+    color: #333;
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    text-align: center;
+}
+
+h1 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+}
+
+h3 {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 0 auto;
+}
+
+th {
+    background-color: hsl(210, 36%, 95%);
+    color: rgb(86, 19, 231);
+    padding: 15px;
+    border: 1px solid #0a0a0a;
+}
+
+th a {
+    color: rgb(87, 19, 206);
+    text-decoration: none;
+    font-size: 1.1rem;
+}
+
+th a:hover {
+    text-decoration: underline;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    h1 {
+        font-size: 2rem;
+    }
+
+    h3 {
+        font-size: 1rem;
+    }
+
+    th a {
+        font-size: 0.9rem;
+    }
+
+    table {
+        display: block;
+    }
+
+    th {
+        display: block;
+        width: 100%;
+        box-sizing: border-box;
+    }
+}
+
+@media (max-width: 480px) {
+    h1 {
+        font-size: 1.5rem;
+    }
+
+    h3 {
+        font-size: 0.9rem;
+    }
+
+    th a {
+        font-size: 0.8rem;
+    }
+}

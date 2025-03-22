@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Review Page</title>
+    <style>
+      /* General Styles */
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f4f4f9;
+        color: #333;
+      }
+
+      .container {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 20px;
+        background-color: #fff;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      }
+
+      h1 {
+        text-align: center;
+        color: #04aa6d;
+      }
+
+      .review-form {
+        margin-bottom: 20px;
+      }
+
+      .review-form input,
+      .review-form textarea {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        font-size: 1rem;
+      }
+
+      .review-form textarea {
+        resize: vertical;
+      }
+
+      .review-form button {
+        display: block;
+        margin-top: 10px;
+        padding: 10px 20px;
+        background-color: #04aa6d;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 1rem;
+      }
+
+      .review-form button:hover {
+        background-color: #45a049;
+      }
+
+      .reviews {
+        margin-top: 20px;
+      }
+
+      .review {
+        background-color: #f9f9f9;
+        padding: 15px;
+        border-radius: 5px;
+        margin-bottom: 10px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      }
+
+      .review p {
+        margin: 0;
+      }
+
+      .review .user-info {
+        font-weight: bold;
+        margin-bottom: 10px;
+      }
+
+      .review .rating {
+        margin-top: 10px;
+        font-size: 24px;
+      }
+
+      .rating span {
+        cursor: pointer;
+        color: #ccc;
+      }
+
+      .rating span.active {
+        color: #ffcc00;
+      }
+
+      /* Responsive Styles */
+      @media (max-width: 600px) {
+        .container {
+          padding: 10px;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="container">
+      <h1>Review Our Web Application</h1>
+
+      <!-- Review Form -->
+      <div class="review-form">
+        <input type="text" id="userName" placeholder="Your Name" required />
+        <input type="email" id="userEmail" placeholder="Your Email" required />
+        <textarea
+          id="reviewInput"
+          rows="4"
+          placeholder="Write your review here..."
+          required
+        ></textarea>
+        <div class="rating" id="rating">
+          <span data-value="1">&#9733;</span>
+          <span data-value="2">&#9733;</span>
+          <span data-value="3">&#9733;</span>
+          <span data-value="4">&#9733;</span>
+          <span data-value="5">&#9733;</span>
+        </div>
+        <button onclick="submitReview()">Submit Review</button>
+      </div>
+
+      <!-- Reviews Section -->
+      <div class="reviews" id="reviewsContainer">
+        <!-- Reviews will be dynamically added here -->
+      </div>
+    </div>
+
+    <script>
+      // Function to handle star rating
+      const stars = document.querySelectorAll(".rating span");
+      let selectedRating = 0;
+
+      stars.forEach((star) => {
+        star.addEventListener("click", () => {
+          selectedRating = star.getAttribute("data-value");
+          stars.forEach((s) => s.classList.remove("active"));
+          for (let i = 0; i < selectedRating; i++) {
+            stars[i].classList.add("active");
+          }
+        });
+      });
+
+      // Function to submit a review
+      function submitReview() {
+        const userName = document.getElementById("userName").value.trim();
+        const userEmail = document.getElementById("userEmail").value.trim();
+        const reviewInput = document.getElementById("reviewInput");
+        const reviewText = reviewInput.value.trim();
+
+        if (userName === "" || userEmail === "" || reviewText === "") {
+          alert("Please fill out all fields before submitting.");
+          return;
+        }
+
+        if (selectedRating === 0) {
+          alert("Please select a rating before submitting.");
+          return;
+        }
+
+        // Create a new review element
+        const reviewElement = document.createElement("div");
+        reviewElement.className = "review";
+        reviewElement.innerHTML = `
+                <div class="user-info">
+                    <p>${userName} (${userEmail})</p>
+                </div>
+                <p>${reviewText}</p>
+                <div class="rating">
+                    ${'<span class="active">&#9733;</span>'.repeat(
+                      selectedRating
+                    )}
+                    ${"<span>&#9733;</span>".repeat(5 - selectedRating)}
+                </div>
+            `;
+
+        // Add the review to the reviews container
+        document.getElementById("reviewsContainer").appendChild(reviewElement);
+
+        // Clear the input fields and reset rating
+        document.getElementById("userName").value = "";
+        document.getElementById("userEmail").value = "";
+        reviewInput.value = "";
+        stars.forEach((star) => star.classList.remove("active"));
+        selectedRating = 0;
+      }
+    </script>
+  </body>
+</html>

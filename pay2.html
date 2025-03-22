@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Store</title>
+    <link rel="stylesheet" href="ex.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/boxicons/2.1.2/css/boxicons.min.css">
+</head>
+<body>
+    <div class="search-container">
+        <input type="text" id="searchInput" class="search-input" placeholder="Search products...">
+        <button class="search-button" onclick="applyFilters()">Search</button><pre>   </pre>
+        <input type="number" id="minPrice" class="filter-input" placeholder="Min Price">
+        <input type="number" id="maxPrice" class="filter-input" placeholder="Max Price">
+        <div class="discount-range"><pre>  </pre>
+            <span>Discount:</span>
+            <input type="range" id="minDiscount" min="0" max="100" value="0" oninput="updateDiscountRange()">
+            <span id="discountRangeValue">0% - 100%</span>
+        </div>
+        <button class="filter-button" onclick="applyFilters()">Apply Filters</button>
+    </div>
+    <!-- Cart Icon -->
+    <label for="cart-toggle">
+        <i class="bx bx-shopping-bag cart-icon-medium" id="cart-icon"></i>
+    </label>
+    <input type="checkbox" id="cart-toggle" style=display:none;>
+    <div class="cart">
+        <h4 class="cart-title">Your Cart</h4>
+        <div class="cart-content" id="cart-content">
+            <!-- Cart items will be added here dynamically -->
+        </div>
+        <div class="overlay" id="overlay"></div>
+        <div class="cart-empty-popup" id="cartEmptyPopup">
+            <p>Your cart is empty. Please add items to proceed.</p>
+            <button onclick="closeCartEmptyPopup()">OK</button>
+        </div>
+        <div class="total" id="total">Total: ₹0</div>
+        <button class="btn" onclick="buyCart()">Buy Now</button>
+        <label for="cart-toggle" id="cart-close"></label>
+        </div>
+    <h1><u>Programming Language Books</u></h1>
+    <table border="3">
+        <td>
+            <div class="product-box">
+                <img src="./assets/img/c.jpg" alt="C Programming">
+                <h3 class="product-title">C Programming</h3>
+                <span class="pro_price">₹255 <del>₹300</del> 15% off</span>
+                <div class="button-container">
+                    <button class="buy-now" onclick="buyNow('C Programming', 255,'./assets/img/c.jpg')">Buy Now</button>
+                    <button class="add-cart" onclick="addToCart('C Programming', 255, './assets/img/c.jpg')">Add to Cart</button>
+                </div>
+        </td>
+        <td>
+            <div class="product-box">
+                <img src="./assets/img/c++.jpg" alt="C++ Programming">
+                <h3 class="product-title">C++ Programming</h3>
+                <span class="pro_price">₹200 <del>₹260</del> 23% off</span>
+                <div class="button-container">
+                    <button class="buy-now" onclick="buyNow('C++ Programming', 200,'./assets/img/c++.jpg')">Buy Now</button>
+                    <button class="add-cart" onclick="addToCart('C++ Programming', 200, './assets/img/c++.jpg')">Add to Cart</button>
+                </div>
+        </td>
+        <td>
+            <div class="product-box">
+                <img src="./assets/img/c hash.jpg" alt="C# Programming">
+                <h3 class="product-title">C# Programming</h3>
+                <span class="pro_price">₹199 <del>₹250</del> 20% off</span>
+                <div class="button-container">
+                    <button class="buy-now" onclick="buyNow('C# Programming', 199, './assets/img/c hash.jpg')">Buy Now</button>
+                    <button class="add-cart" onclick="addToCart('C# Programming', 199, './assets/img/c hash.jpg')">Add to Cart</button>
+                </div>
+        </td>
+        <td>
+            <div class="product-box">
+                <img src="./assets/img/j.jpg" length="300" width="300" alt="Java Programming">
+                <h3 class="product-title">Java Programming</h3>
+                <span class="pro_price">₹299 <del>₹320</del> 6% off</span>
+                <div class="button-container">
+                    <button class="buy-now" onclick="buyNow('java Programming', 299,'./assets/img/j.jpg')">Buy Now</button>
+                    <button class="add-cart" onclick="addToCart('Java Programming', 299, './assets/img/j.jpg')">Add to Cart</button>
+                </div>
+        </td>
+        <td>
+            <div class="product-box">
+                <img src="./assets/img/l.jpg" alt="Linux & Shell Programming">
+                <h3 class="product-title">Linux & Shell Programming</h3>
+                <span class="pro_price">₹249<del>₹300</del> 17% off</span>
+                <div class="button-container">
+                    <button class="buy-now" onclick="buyNow('Linux & Shell Programming', 300,'./assets/img/l.jpg')">Buy Now</button>
+                    <button class="add-cart" onclick="addToCart('Linux & Shell Programming', 300, './assets/img/l.jpg')">Add to Cart</button>
+                </div>
+        </td>
+        </tr>
+    
+    
+        <td>
+            <div class="product-box">
+                <img src="./assets/img/p.webp" alt="python">
+                <h3 class="product-title">python</h3>
+                <span class="pro_price">₹399<del>₹450</del> 11% off</span>
+                <div class="button-container">
+                    <button class="buy-now" onclick="buyNow('python', 399,'./assets/img/p.webp')">Buy Now</button>
+                    <button class="add-cart" onclick="addToCart('python', 399, './assets/img/p.webp')">Add to Cart</button>
+                </div>
+        </td>
+        <td>
+            <div class="product-box">
+                <img src="./assets/img/aj.jpg" alt="Advanced java">
+                <h3 class="product-title">Advanced java</h3>
+                <span class="pro_price">₹252<del>₹320</del> 21% off</span>
+                <div class="button-container">
+                    <button class="buy-now" onclick="buyNow('Advanced Java', 252,'./assets/img/aj.jpg')">Buy Now</button>
+                    <button class="add-cart" onclick="addToCart('Advanced Java', 252, './assets/img/aj.jpg')">Add to Cart</button>
+                </div>
+        </td>
+        <td>
+            <div class="product-box">
+                <img src="./assets/img/js.jpg" alt="Javascript">
+                <h3 class="product-title">Javascript</h3>
+                <span class="pro_price">₹599<del>₹700</del> 14% off</span>
+                <div class="button-container">
+                    <button class="buy-now" onclick="buyNow('Javascript', 599,'./assets/img/js.jpg')">Buy Now</button>
+                    <button class="add-cart" onclick="addToCart('Javascript', 599, './assets/img/js.jpg')">Add to Cart</button>
+                </div>
+        </td>
+        <td>
+            <div class="product-box">
+                <img src="./assets/img/r.jpg" alt="Ruby">
+                <h3 class="product-title">Ruby</h3>
+                <span class="pro_price">₹249<del>₹285</del> 12% off</span>
+                <div class="button-container">
+                    <button class="buy-now" onclick="buyNow('Ruby', 249,'./assets/img/r.jpg')">Buy Now</button>
+                    <button class="add-cart" onclick="addToCart('Ruby', 249, './assets/img/r.jpg')">Add to Cart</button>
+                </div>
+        </td>
+        <td>
+            <div class="product-box">
+                <img src="./assets/img/ph.jpg" alt="php">
+                <h3 class="product-title">Php</h3>
+                <span class="pro_price">₹399<del>₹450</del> 11% off</span>
+                <div class="button-container">
+                    <button class="buy-now" onclick="buyNow('PHP', 399,'./assets/img/ph.jpg')">Buy Now</button>
+                    <button class="add-cart" onclick="addToCart('PHP', 399, './assets/img/ph.jpg')">Add to Cart</button>
+                </div>
+        </td>
+    </table>
+    <h1><u>TECHNOLOGY</u></h1>
+    <table border="3">
+        <td>
+            <div class="product-box">
+                <img src="./assets/img/t.jpg" alt="THE SOUL OF NEW MACHINE">
+                <h3 class="product-title">The soul of new machine</h3>
+                <span class="pro_price">₹620 <del>₹710</del> 12% off</span>
+                <div class="button-container">
+                    <button class="buy-now" onclick="buyNow('THE SOUL OF NEW MACHINE', 620,'./assets/img/t.jpg')">Buy Now</button>
+                    <button class="add-cart" onclick="addToCart('THE SOUL OF NEW MACHINE', 620, './assets/img/t.jpg')">Add to Cart</button>
+                </div>
+        </td>
+        <td>
+            <div class="product-box">
+                <img src="./assets/img/i.jpg" alt="THE INEVITABLE">
+                <h3 class="product-title">The Inevitable</h3>
+                <span class="pro_price">₹200 <del>₹260</del> 23% off</span>
+                <div class="button-container">
+                    <button class="buy-now" onclick="buyNow('THE INEVITABLE', 200,'./assets/img/i.jpg')">Buy Now</button>
+                    <button class="add-cart" onclick="addToCart('THE INEVITABLE', 200, './assets/img/i.jpg')">Add to Cart</button>
+                </div>
+        </td>
+        <td>
+            <div class="product-box">
+                <img src="./assets/img/e.jpg" alt="ELON MUSK">
+                <h3 class="product-title">Elon Musk</h3>
+                <span class="pro_price">₹299 <del>₹325</del> 8% off</span>
+                <div class="button-container">
+                    <button class="buy-now" onclick="buyNow('ELON MUSK', 299, './assets/img/e.jpg')">Buy Now</button>
+                    <button class="add-cart" onclick="addToCart('ELON MUSK', 299, './assets/img/e.jpg')">Add to Cart</button>
+                </div>
+        </td>
+        <td>
+            <div class="product-box">
+                <img src="./assets/img/li.jpg" alt="LIFE 3.0">
+                <h3 class="product-title">Life 3.0</h3>
+                <span class="pro_price">₹300<del>₹355</del> 15% off</span>
+                <div class="button-container">
+                    <button class="buy-now" onclick="buyNow('LIFE 3.0', 300,'./assets/img/li.jpg')">Buy Now</button>
+                    <button class="add-cart" onclick="addToCart('LIFE 3.0', 300, './assets/img/li.jpg')">Add to Cart</button>
+                </div>
+        </td>
+        <td>
+            <div class="product-box">
+                <img src="./assets/img/ai.jpg" alt="AI SUPER POWER">
+                <h3 class="product-title">AI Super Power</h3>
+                <span class="pro_price">₹99<del>₹150</del> 34% off</span>
+                <div class="button-container">
+                    <button class="buy-now" onclick="buyNow('AI SUPER POWER', 99,'./assets/img/ai.jpg')">Buy Now</button>
+                    <button class="add-cart" onclick="addToCart('AI SUPER POWER', 99, './assets/img/ai.jpg')">Add to Cart</button>
+                </div>
+        </td>
+        <tr>
+            <td>
+                <div class="product-box">
+                    <img src="./assets/img/in.jpg" alt="THE INNOVATORS">
+                    <h3 class="product-title">The Innovators</h3>
+                    <span class="pro_price">₹255<del>₹300</del> 15% off</span>
+                    <div class="button-container">
+                        <button class="buy-now" onclick="buyNow('THE INNOVATORS', 255,'./assets/img/in.jpg')">Buy Now</button>
+                        <button class="add-cart" onclick="addToCart('THE INNOVATORS', 255, './assets/img/in.jpg')">Add to Cart</button>
+                    </div>
+            </td>
+            <td>
+                <div class="product-box">
+                    <img src="./assets/img/cs.jpg" alt="COGNITIVE SURPLUS">
+                    <h3 class="product-title">Cognitive Surplus</h3>
+                    <span class="pro_price">₹249<del>₹395</del> 36% off</span>
+                    <div class="button-container">
+                        <button class="buy-now" onclick="buyNow('COGNITIVE SURPLUS', 249,'./assets/img/cs.jpg')">Buy Now</button>
+                        <button class="add-cart" onclick="addToCart('COGNITIVE SURPLUS', 249, './assets/img/cs.jpg')">Add to Cart</button>
+                    </div>
+            </td>
+            <td>
+                <div class="product-box">
+                    <img src="./assets/img/d.jpg" alt="DON'T UNPLUG">
+                    <h3 class="product-title">Don't Unplug</h3>
+                    <span class="pro_price">₹254<del>₹299</del> 15% off</span>
+                    <div class="button-container">
+                        <button class="buy-now" onclick="buyNow('DONT UNPLG', 254,'./assets/img/d.jpg')">Buy Now</button>
+                        <button class="add-cart" onclick="addToCart('DONT UNPLG', 254, './assets/img/d.jpg')">Add to Cart</button>
+                    </div>
+            </td>
+            <td>
+                <div class="product-box">
+                    <img src="./assets/img/cw.jpg" alt="CHIP WAR">
+                    <h3 class="product-title">Chip War</h3>
+                    <span class="pro_price">₹200 <del>₹220</del> 9% off</span>
+                    <div class="button-container">
+                        <button class="buy-now" onclick="buyNow('CHIP WAR', 200,'./assets/img/cw.jpg')">Buy Now</button>
+                        <button class="add-cart" onclick="addToCart('CHIP WAR', 200, './assets/img/cw.jpg')">Add to Cart</button>
+                    </div>
+            </td>
+            <td>
+                <div class="product-box">
+                    <img src="./assets/img/am.jpg" alt="AI AND ML">
+                    <h3 class="product-title">AL and ML</h3>
+                    <span class="pro_price">₹720<del>₹750</del> 4% off</span>
+                    <div class="button-container">
+                        <button class="buy-now" onclick="buyNow('AI AND ML', 720,'./assets/img/ai.jpg')">Buy Now</button>
+                        <button class="add-cart" onclick="addToCart('AI AND ML', 720, './assets/img/ai.jpg')">Add to Cart</button>
+                    </div>
+            </td>
+    </table>
+    <h1><u>English Story Books</u></h1>
+    <table border="3">
+        <td>
+            <div class="product-box">
+                <img src="./assets/img/tl.jpg" alt="The Little Prince">
+                <h3 class="product-title">The Little Prince</h3>
+                <span class="pro_price">₹199<del>₹250</del> 20% off</span>
+                <div class="button-container">
+                    <button class="buy-now" onclick="buyNow('The Little Prince', 199,'./assets/img/tl.jpg')">Buy Now</button>
+                    <button class="add-cart" onclick="addToCart('The Little Prince', 199, './assets/img/tl.jpg')">Add to Cart</button>
+                </div>
+        </td>
+        <td>
+            <div class="product-box">
+                <img src="./assets/img/b.jpg" alt="The Blue Umbrella">
+                <h3 class="product-title">The Blue Umbrella</h3>
+                <span class="pro_price">₹155<del>₹400</del> 61% off</span>
+                <div class="button-container">
+                    <button class="buy-now" onclick="buyNow('The Blue Umbrella', 155,'./assets/img/b.jpg')">Buy Now</button>
+                    <button class="add-cart" onclick="addToCart('The Blue Umbrella', 155, './assets/img/b.jpg')">Add to Cart</button>
+                </div>
+        </td>
+        <td>
+            <div class="product-box">
+                <img src="./assets/img/en.jpg" alt="It Ends with Us">
+                <h3 class="product-title">It Ends with Us</h3>
+                <span class="pro_price">₹179<del>₹762</del> 76% off</span>
+                <div class="button-container">
+                    <button class="buy-now" onclick="buyNow('IT ENDS WITH US', 179,'./assets/img/en.jpg')">Buy Now</button>
+                    <button class="add-cart" onclick="addToCart('IT ENDS WITH US', 179, './assets/img/en.jpg')">Add to Cart</button>
+                </div>
+        </td>
+        <td>
+            <div class="product-box">
+                <img src="./assets/img/em.jpg" alt="Empty World">
+                <h3 class="product-title">Empty World</h3>
+                <span class="pro_price">₹810<del>₹910</del> 10% off</span>
+                <div class="button-container">
+                    <button class="buy-now" onclick="buyNow('EMPTY WORLD', 810,'./assets/img/em.jpg')">Buy Now</button>
+                    <button class="add-cart" onclick="addToCart('EMPTY WORLD', 810, './assets/img/em.jpg')">Add to Cart</button>
+                </div>
+        </td>
+        <td>
+            <div class="product-box">
+                <img src="./assets/img/g.jpg" alt="The Giver">
+                <h3 class="product-title">The Giver</h3>
+                <span class="pro_price">₹269<del>₹300</del> 10% off</span>
+                <div class="button-container">
+                    <button class="buy-now" onclick="buyNow('THE GIVER', 269,'./assets/img/g.jpg')">Buy Now</button>
+                    <button class="add-cart" onclick="addToCart('THE GIVER', 269, './assets/img/g.jpg')">Add to Cart</button>
+                </div>
+        </td>
+        </tr>
+        <td>
+            <div class="product-box">
+                <img src="./assets/img/y.jpg" alt="The Diary of a Young Girl">
+                <h3 class="product-title">The Diary of a Young Girl</h3>
+                <span class="pro_price">₹199<del>₹210</del> 5% off</span>
+                <div class="button-container">
+                    <button class="buy-now" onclick="buyNow('THE DIARY OF A YOUNG GIRL', 199,'./assets/img/y.jpg')">Buy Now</button>
+                    <button class="add-cart" onclick="addToCart('THE DIARY OF A YOUNG GIRL', 199, './assets/img/y.jpg')">Add to Cart</button>
+                </div>
+        </td>
+        <td>
+            <div class="product-box">
+                <img src="./assets/img/bi.jpg" alt="Believe in Yourself">
+                <h3 class="product-title">Believe in Yourself</h3>
+                <span class="pro_price">₹325<del>₹349</del> 6% off</span>
+                <div class="button-container">
+                    <button class="buy-now" onclick="buyNow('BELIEVE IN YOURSELF', 325,'./assets/img/bi.jpg')">Buy Now</button>
+                    <button class="add-cart" onclick="addToCart('BELIEVE IN YOURSELF', 325, './assets/img/bi.jpg')">Add to Cart</button>
+                </div>
+        </td>
+        <td>
+            <div class="product-box">
+                <img src="./assets/img/f.jpg" alt="Fear Not: Be Strong">
+                <h3 class="product-title">Fear Not: Be Strong</h3>
+                <span class="pro_price">₹200<del>₹260</del> 23% off</span>
+                <div class="button-container">
+                    <button class="buy-now" onclick="buyNow('FEAR NOT: BE STRONG', 200,'./assets/img/f.jpg')">Buy Now</button>
+                    <button class="add-cart" onclick="addToCart('FEAR NOT: BE STRONG', 200, './assets/img/f.jpg')">Add to Cart</button>
+                </div>
+        </td>
+        <td>
+            <div class="product-box">
+                <img src="./assets/img/o.jpg" alt="Old Man and the Sea">
+                <h3 class="product-title">Old Man and the Sea</h3>
+                <span class="pro_price">₹400<del>₹510</del> 21% off</span>
+                <div class="button-container">
+                    <button class="buy-now" onclick="buyNow('OLD MAN AND THE SEA', 400,'./assets/img/o.jpg')">Buy
+                        Now</button>
+                    <button class="add-cart" onclick="addToCart('OLD MAN AND THE SEA', 400, './assets/img/o.jpg')">Add to Cart</button>
+                </div>
+        </td>
+        <td>
+            <div class="product-box">
+                <img src="./assets/img/gr.jpg" alt="Great Expectations">
+                <h3 class="product-title">Great Expectations</h3>
+                <span class="pro_price">₹210<del>₹260</del> 19% off</span>
+                <div class="button-container">
+                    <button class="buy-now" onclick="buyNow('GREAT EXPECTATIONS', 210,'./assets/img/gr.jpg')">Buy
+                        Now</button>
+                    <button class="add-cart" onclick="addToCart('GREAT EXPECTATIONS', 210, './assets/img/gr.jpg')">Add to Cart</button>
+                </div>
+        </td>
+        </tr>
+    </table>
+    <h1><u>Competitive Exam Books</u></h1>
+    <table border="3">
+        <td>
+            <div class="product-box">
+                <img src="./assets/img/n.jpg" alt="MTG">
+                <h3 class="product-title">MTG</h3>
+                <span class="pro_price">₹450<del>₹510</del> 11% off</span>
+                <div class="button-container">
+                    <button class="buy-now" onclick="buyNow('MTG', 450,'./assets/img/n.jpg')">Buy Now</button>
+                    <button class="add-cart" onclick="addToCart('MTG', 450, './assets/img/n.jpg')">Add to Cart</button>
+                </div>
+        </td>
+        <td>
+            <div class="product-box">
+                <img src="./assets/img/ts.jpg" alt="Test Series">
+                <h3 class="product-title">Test Series</h3>
+                <span class="pro_price">₹330<del>₹270</del> 18% off</span>
+                <div class="button-container">
+                    <button class="buy-now" onclick="buyNow('TEST SERIES', 330,'./assets/img/ts.jpg')">Buy Now</button>
+                    <button class="add-cart" onclick="addToCart('TEST SERIES', 330, './assets/img/ts.jpg')">Add to Cart</button>
+                </div>
+        </td>
+        <td>
+            <div class="product-box">
+                <img src="./assets/img/fi.jpg" alt="NCERT Fingertips">
+                <h3 class="product-title">NCERT Fingertips</h3>
+                <span class="pro_price">₹749<del>₹1499</del> 50% off</span>
+                <div class="button-container">
+                    <button class="buy-now" onclick="buyNow('NCERT FINGERTIPS', 749,'./assets/img/fi.jpg')">Buy Now</button>
+                    <button class="add-cart" onclick="addToCart('NCERT FINGERTIPS', 749, './assets/img/fi.jpg')">Add to Cart</button>
+                </div>
+        </td>
+        <td>
+            <div class="product-box">
+                <img src="./assets/img/Je.jpg" alt="JEE (P C M)">
+                <h3 class="product-title">JEE (P C M)</h3>
+                <span class="pro_price">₹210<del>₹360</del> 41% off</span>
+                <div class="button-container">
+                    <button class="buy-now" onclick="buyNow('JEE (P C M)', 210,'./assets/img/Je.jpg')">Buy Now</button>
+                    <button class="add-cart" onclick="addToCart('JEE (P C M)', 210, './assets/img/Je.jpg')">Add to Cart</button>
+                </div>
+        </td>
+        <td>
+            <div class="product-box">
+                <img src="./assets/img/jm.jpg" alt="JEE Mathematics">
+                <h3 class="product-title">JEE Mathematics</h3>
+                <span class="pro_price">₹499<del>₹750</del> 33% off</span>
+                <div class="button-container">
+                    <button class="buy-now" onclick="buyNow('JEE MATHEMATICS', 499,'./assets/img/jm.jpg')">Buy Now</button>
+                    <button class="add-cart" onclick="addToCart('JEE MATHEMATICS', 499, './assets/img/jm.jpg')">Add to Cart</button>
+                </div>
+        </td>
+        </tr>
+        <td>
+            <div class="product-box">
+                <img src="./assets/img/ge.jpg" alt="Geography">
+                <h3 class="product-title">Geography</h3>
+                <span class="pro_price">₹99<del>₹250</del> 60% off</span>
+                <div class="button-container">
+                    <button class="buy-now" onclick="buyNow('GEOGRAPHY', 99,'./assets/img/ge.jpg')">Buy Now</button>
+                    <button class="add-cart" onclick="addToCart('GEOGRAPHY', 99, './assets/img/ge.jpg')">Add to Cart</button>
+                </div>
+        </td>
+        <td>
+            <div class="product-box">
+                <img src="./assets/img/ba.jpg" alt="Indian Constitution">
+                <h3 class="product-title">Indian Constitution</h3>
+                <span class="pro_price">₹249<del>₹300</del> 17% off</span>
+                <div class="button-container">
+                    <button class="buy-now" onclick="buyNow('INDIAN CONSTITUTION', 249,'./assets/img/ba.jpg')">Buy Now</button>
+                    <button class="add-cart" onclick="addToCart('INDIAN CONSTITUTION', 249, './assets/img/ba.jpg')">Add to Cart</button>
+                </div>
+        </td>
+        <td>
+            <div class="product-box">
+                <img src="./assets/img/ia.jpg" alt="IAS/KAS (Prelims/Mains)">
+                <h3 class="product-title">IAS/KAS (Prelims/Mains)</h3>
+                <span class="pro_price">₹210<del>₹300</del> 30% off</span>
+                <div class="button-container">
+                    <button class="buy-now" onclick="buyNow('IAS/KAS', 210,'./assets/img/ia.jpg')">Buy Now</button>
+                    <button class="add-cart" onclick="addToCart('IAS/KAS (PRELIMS/MAINS)', 210, './assets/img/ia.jpg')">Add to Cart</button>
+                </div>
+        </td>
+        <td>
+            <div class="product-box">
+                <img src="./assets/img/gn.jpg" alt="General Knowledge">
+                <h3 class="product-title">General Knowledge</h3>
+                <span class="pro_price">₹599<del>₹720</del> 16% off</span>
+                <div class="button-container">
+                    <button class="buy-now" onclick="buyNow('GENERAL KNOWLEDGE', 599,'./assets/img/gn.jpg')">Buy Now</button>
+                    <button class="add-cart" onclick="addToCart('GENERAL KNOWLEDGE', 599, './assets/img/gn.jpg')">Add to Cart</button>
+                </div>
+        </td>
+        <td>
+            <div class="product-box">
+                <img src="./assets/img/bn.jpg" alt="Banking">
+                <h3 class="product-title">Banking</h3>
+                <span class="pro_price">₹499<del>₹600</del> 16% off</span>
+                <div class="button-container">
+                    <button class="buy-now" onclick="buyNow('BANKING', 499,'./assets/img/bn.jpg')">Buy Now</button>
+                    <button class="add-cart" onclick="addToCart('BANKING', 499, './assets/img/bn.jpg')">Add to Cart</button>
+                </div>
+        </td>
+        </tr>
+    </table>
+    <script>
+        // Update Discount Range Display
+            function updateDiscountRange() {
+                const minDiscount = document.getElementById('minDiscount').value;
+                document.getElementById('discountRangeValue').textContent = `${minDiscount}% - 100%`;
+            }
+
+            // Combined Search and Filter Functionality
+            function applyFilters() {
+                const input = document.getElementById('searchInput').value.toUpperCase();
+                const minPrice = parseFloat(document.getElementById('minPrice').value) || 0;
+                const maxPrice = parseFloat(document.getElementById('maxPrice').value) || Infinity;
+                const minDiscount = parseFloat(document.getElementById('minDiscount').value) || 0;
+
+                const productBoxes = document.querySelectorAll('.product-box');
+                const categoryTitles = document.querySelectorAll('.category-title');
+
+                let hasVisibleProducts = false;
+
+                productBoxes.forEach(box => {
+                    const productName = box.querySelector('.product-title').textContent.toUpperCase();
+                    const price = parseFloat(box.querySelector('.pro_price').textContent.replace('₹', '').split(' ')[0]);
+                    const discount = parseFloat(box.querySelector('.pro_price del').textContent.replace('₹', '')) - price;
+                    const discountPercentage = (discount / parseFloat(box.querySelector('.pro_price del').textContent.replace('₹', ''))) * 100;
+
+                    if (
+                        productName.includes(input) &&
+                        price >= minPrice &&
+                        price <= maxPrice &&
+                        discountPercentage >= minDiscount
+                    ) {
+                        box.style.display = "block"; // Show matching products
+                        hasVisibleProducts = true;
+                    } else {
+                        box.style.display = "none"; // Hide non-matching products
+                    }
+                });
+
+                // Show or hide category titles based on visible products
+                categoryTitles.forEach(title => {
+                    const table = title.nextElementSibling; // Get the table following the <h1>
+                    const visibleProductsInTable = table.querySelectorAll('.product-box[style="display: block;"]').length > 0;
+
+                    if (visibleProductsInTable) {
+                        title.classList.remove('hidden'); // Show the category title
+                    } else {
+                        title.classList.add('hidden'); // Hide the category title
+                    }
+                });
+            }
+        let cart = [];
+        let total = 0;
+        function addToCart(productName, price, imageSrc) {
+            const existingProductIndex = cart.findIndex(item => item.name === productName);
+            if (existingProductIndex === -1) {
+                cart.push({ name: productName, price: price, image: imageSrc, quantity: 1 });
+            } else {
+                cart[existingProductIndex].quantity += 1;
+            }
+            updateCart();
+        }
+        function removeFromCart(productName) {
+            cart = cart.filter(item => item.name !== productName);
+            updateCart();
+        }
+
+        // Function to update the quantity of items in the cart
+        function updateQuantity(productName, change) {
+            const productIndex = cart.findIndex(item => item.name === productName);
+            if (productIndex !== -1) {
+                cart[productIndex].quantity += change;
+                if (cart[productIndex].quantity <= 0) {
+                    removeFromCart(productName);
+                } else {
+                    updateCart();
+                }
+            }
+        }
+
+        // Function to update the cart UI
+        function updateCart() {
+            const cartContent = document.getElementById("cart-content");
+            const totalPriceElement = document.getElementById("total");
+            cartContent.innerHTML = '';
+            total = 0;
+            cart.forEach(item => {
+                total += item.price * item.quantity;
+                cartContent.innerHTML += `
+                        <div class="cart-item">
+                            <img src="${item.image}" alt="${item.name}">
+                            <div>${item.name} - ₹${item.price} x ${item.quantity}</div>
+                            <button class="quantity-button" onclick="updateQuantity('${item.name}', -1)">-</button>
+                            <button class="quantity-button" onclick="updateQuantity('${item.name}', 1)">+</button>
+                            <button onclick="removeFromCart('${item.name}')">Remove</button>
+                        </div>
+                    `;
+            });
+            totalPriceElement.innerHTML = `Total: ₹${total}`;
+        }
+       function buyNow(productName, price, imageSrc) {
+        window.location.href = `paym.html?product=${encodeURIComponent(productName)}&price=${price}&image=${encodeURIComponent(imageSrc)}`;
+    }
+        // Function to handle cart purchase
+        function buyCart() {
+            const cartData = JSON.stringify(cart);
+            window.location.href = `paym.html?cart=${encodeURIComponent(cartData)}`;
+        }
+         // Buy Cart Functionality
+            function buyCart() {
+                if (cart.length === 0) {
+                    // Show cart empty pop-up
+                    document.getElementById('cartEmptyPopup').style.display = 'block';
+                    document.getElementById('overlay').style.display = 'block';
+                } else {
+                    // Proceed to checkout
+                    const cartData = JSON.stringify(cart);
+                    window.location.href = `paym.html?cart=${encodeURIComponent(cartData)}`;
+                }
+            }
+         function closeCartEmptyPopup() {
+                document.getElementById('cartEmptyPopup').style.display = 'none';
+                document.getElementById('overlay').style.display = 'none';
+            }
+
+    </script>
+</body>
+
+</html>
